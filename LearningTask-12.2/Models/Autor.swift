@@ -9,10 +9,10 @@ import Foundation
 
 struct Autor: Codable {
     let id: Int?
-    let fotoURI: URL
     let nome: String
     let sobrenome: String
     let bio: String
+    let fotoURI: URL
     let tecnologias: [String]
     
     var nomeCompleto: String {
@@ -30,9 +30,9 @@ struct Autor: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id, bio
-        case fotoURI = "profilePicturePath"
         case nome = "firstName"
         case sobrenome = "lastName"
+        case fotoURI = "profilePicturePath"
         case tecnologias = "technologies"
     }
 }

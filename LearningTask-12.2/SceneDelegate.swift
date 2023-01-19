@@ -16,7 +16,7 @@ import UIKit
  * * email: "admin@casadocodigo.com.br"
  * * senha: "123456"
  */
-let tokenValue = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDYXNhIGRvIEPDs2RpZ28gQVBJIiwic3ViIjoiMiIsImlhdCI6MTY3MTI5NzQ2NSwiZXhwIjoxNjcxOTAyMjY1fQ.0UzD1zdhUZMzcFTVTkyDJslJctl3IZCfZ23zBmxMKmg"
+let tokenValue = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDYXNhIGRvIEPDs2RpZ28gQVBJIiwic3ViIjoiMiIsImlhdCI6MTY3NDA1NDU0MywiZXhwIjoxNjc0NjU5MzQzfQ.DEKg3m3qdXL03koHqHae6dsTM3rSUfdgF7WEDB4jpbs"
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -42,8 +42,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         userAuthentication.set(authentication)
         
         // MARK: - Setup
-        let autoresAPI = AutoresAPI()
-        let livrosAPI = LivrosAPI()
+        let autoresAPI = AutoresAPI(httpRequest: HTTPRequest())
+        let livrosAPI = LivrosAPI(httpRequest: HTTPRequest())
         
         let tabBarController = window!.rootViewController as! UITabBarController
         

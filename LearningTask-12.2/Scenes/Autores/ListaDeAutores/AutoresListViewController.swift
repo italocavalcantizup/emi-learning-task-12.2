@@ -35,18 +35,21 @@ class AutoresListViewController: UITableViewController {
     }
     
     private func carregaAutores() {
-        autoresAPI?.listaTodos(completionHandler: { [weak self] autores in
-            self?.autores = autores
-            self?.tableView.reloadData()
+        autoresAPI?.getAllAuthors { [weak self] result in
+            switch result {
+            case .success(let autores):
+                self?.autores = autores
+                self?.tableView.reloadData()
+            case .failure(let error):
+                let mensagem = """
+                    Não foi possível carregar autores.
+                    \(error.localizedDescription)
+                """
+                
+                UIAlertController.showError(mensagem, in: self!)
+            }
             
-        }, failureHandler:{ error in
-            let mensagem = """
-                Não foi possível carregar autores.
-                \(error.localizedDescription)
-            """
-            
-            UIAlertController.showError(mensagem, in: self)
-        })
+        }
     }
 
     // MARK: Navigation

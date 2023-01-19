@@ -17,13 +17,20 @@ class LivroViewController: UIViewController {
     @IBOutlet private weak var precoImpressoLabel: UILabel!
     @IBOutlet private weak var precoComboLabel: UILabel!
     
+    @IBOutlet private weak var nomeDoAutorInferiorLabel: UILabel!
+    @IBOutlet private weak var conteudoLabel: UILabel!
+    @IBOutlet private weak var fotoPerfilImageView: UIImageView!
+    @IBOutlet private weak var bioDoAutorLabel: UILabel!
+    @IBOutlet private weak var numeroPaginasLabel: UILabel!
+    @IBOutlet private weak var isbnLabel: UILabel!
+    @IBOutlet private weak var dataPublicacaoLabel: UILabel!
+    
     var livro: Livro!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyTheme()
         // Do any additional setup after loading the view.
-        
         atualizaView(com: livro)
     }
 
@@ -34,6 +41,14 @@ class LivroViewController: UIViewController {
         capaImageView.setImageByDowloading(url: livro.imagemDeCapaURI,
                                            placeholderImage: .init(named: "Book"))
     
+        conteudoLabel.text = livro.descricao
+        nomeDoAutorInferiorLabel.text = livro.autor.nomeCompleto
+        fotoPerfilImageView.setImageByDowloading(url: livro.autor.fotoURI)
+        bioDoAutorLabel.text = livro.autor.bio
+        numeroPaginasLabel.text = String(livro.numeroDePaginas)
+        isbnLabel.text = livro.isbn
+        dataPublicacaoLabel.text = livro.dataPublicacao
+        
         livro.precos.forEach { preco in
             let valor = NumberFormatter.formatToCurrency(decimal: preco.valor)
             switch preco.tipoDeLivro {

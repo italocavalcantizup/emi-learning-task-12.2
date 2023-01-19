@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ED8813C296F2B5900A17DDE /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8813B296F2B5900A17DDE /* HTTPRequest.swift */; };
+		3ED8813E296F2C1700A17DDE /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8813D296F2C1700A17DDE /* APIError.swift */; };
+		3ED88140296F2D4F00A17DDE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8813F296F2D4F00A17DDE /* Endpoint.swift */; };
+		3ED88142296F2EA100A17DDE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED88141296F2EA100A17DDE /* Result.swift */; };
+		3ED8814529705B0B00A17DDE /* NovoLivroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8814429705B0B00A17DDE /* NovoLivroViewController.swift */; };
 		58089E3B289AE503001F8607 /* LivrosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58089E3A289AE503001F8607 /* LivrosListViewController.swift */; };
 		58089E3D289AE623001F8607 /* Carrinho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58089E3C289AE623001F8607 /* Carrinho.swift */; };
 		58089E3F289AE660001F8607 /* SectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58089E3E289AE660001F8607 /* SectionTitleView.swift */; };
@@ -49,6 +54,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3ED8813B296F2B5900A17DDE /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		3ED8813D296F2C1700A17DDE /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		3ED8813F296F2D4F00A17DDE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		3ED88141296F2EA100A17DDE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		3ED8814429705B0B00A17DDE /* NovoLivroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovoLivroViewController.swift; sourceTree = "<group>"; };
 		58089E3A289AE503001F8607 /* LivrosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosListViewController.swift; sourceTree = "<group>"; };
 		58089E3C289AE623001F8607 /* Carrinho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrinho.swift; sourceTree = "<group>"; };
 		58089E3E289AE660001F8607 /* SectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleView.swift; sourceTree = "<group>"; };
@@ -103,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3ED8814329705AF200A17DDE /* NovoLivro */ = {
+			isa = PBXGroup;
+			children = (
+				3ED8814429705B0B00A17DDE /* NovoLivroViewController.swift */,
+			);
+			path = NovoLivro;
+			sourceTree = "<group>";
+		};
 		58089E39289AE4E5001F8607 /* ListaDeLivros */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +161,7 @@
 			children = (
 				58089E39289AE4E5001F8607 /* ListaDeLivros */,
 				58089E45289AE6DA001F8607 /* Livro */,
+				3ED8814329705AF200A17DDE /* NovoLivro */,
 				58089E4A289AE732001F8607 /* Carrinho */,
 				580C34182951FA480099D5D9 /* SeletorDeAutor */,
 			);
@@ -234,6 +253,7 @@
 				586D6378294E1B2B0011076E /* ImageFetching+UIImageView.swift */,
 				580C34142951E4230099D5D9 /* CustomPatterns+DateFormatter.swift */,
 				580C34162951E4860099D5D9 /* DecodingFormattedDates+JSONCoding.swift */,
+				3ED88141296F2EA100A17DDE /* Result.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +286,9 @@
 			children = (
 				5881AC5C288B1EF500F9A9CC /* AutoresAPI.swift */,
 				5881AC5E288B1F0500F9A9CC /* LivrosAPI.swift */,
+				3ED8813B296F2B5900A17DDE /* HTTPRequest.swift */,
+				3ED8813D296F2C1700A17DDE /* APIError.swift */,
+				3ED8813F296F2D4F00A17DDE /* Endpoint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -451,7 +474,9 @@
 				5846DE8F288EE59C00DF985F /* SimpleAlert+UIAlertController.swift in Sources */,
 				5865B862294E315A00E6B23D /* User.swift in Sources */,
 				580C34172951E4860099D5D9 /* DecodingFormattedDates+JSONCoding.swift in Sources */,
+				3ED88142296F2EA100A17DDE /* Result.swift in Sources */,
 				5881AC5D288B1EF500F9A9CC /* AutoresAPI.swift in Sources */,
+				3ED8814529705B0B00A17DDE /* NovoLivroViewController.swift in Sources */,
 				58089E3B289AE503001F8607 /* LivrosListViewController.swift in Sources */,
 				5881AC5F288B1F0500F9A9CC /* LivrosAPI.swift in Sources */,
 				5881AC63288B1F6E00F9A9CC /* ListaDeItensHorizontal.swift in Sources */,
@@ -461,16 +486,19 @@
 				58089E53289AE7E0001F8607 /* ItemDeCompraTableViewCell.swift in Sources */,
 				5881AC77288B24E400F9A9CC /* LivroDoAutorTableViewCell.swift in Sources */,
 				580C341D2951FAC70099D5D9 /* SeletorDeAutorTableViewCell.swift in Sources */,
+				3ED88140296F2D4F00A17DDE /* Endpoint.swift in Sources */,
 				5881AC58288B1EAF00F9A9CC /* Livro.swift in Sources */,
 				58089E49289AE717001F8607 /* Currency+NumberFormatter.swift in Sources */,
 				586D6377294E1AFC0011076E /* ImageDownload.swift in Sources */,
 				5881AC5A288B1EC300F9A9CC /* Autor.swift in Sources */,
 				580C34152951E4230099D5D9 /* CustomPatterns+DateFormatter.swift in Sources */,
+				3ED8813C296F2B5900A17DDE /* HTTPRequest.swift in Sources */,
 				58089E42289AE697001F8607 /* LivroCollectionViewCell.swift in Sources */,
 				580C341A2951FA660099D5D9 /* SeletorDeAutorViewController.swift in Sources */,
 				5881AC6E288B243B00F9A9CC /* AutorTableViewCell.swift in Sources */,
 				58089E51289AE7C5001F8607 /* CarrinhoSectionHeaderView.swift in Sources */,
 				5881AC65288B1F9500F9A9CC /* TableSectionHeaderView.swift in Sources */,
+				3ED8813E296F2C1700A17DDE /* APIError.swift in Sources */,
 				58C67259288B0ECF00E8FD01 /* AppDelegate.swift in Sources */,
 				5881AC6B288B240E00F9A9CC /* AutoresListViewController.swift in Sources */,
 				5865B860294E2C5500E6B23D /* UserAuthentication.swift in Sources */,

@@ -55,13 +55,16 @@ class SeletorDeAutorViewController: UIViewController {
     }
     
     func carregaAutores() {
-        autoresAPI?.listaTodos(completionHandler: { [weak self] autores in
-            self?.autores = autores
-            
-        }, failureHandler: { [weak self] erro in
-            let mensagem = "Não foi possível carregar autores. \(erro.localizedDescription)"
-            UIAlertController.showError(mensagem, in: self!)
-        })
+        guard let autoresAPI = autoresAPI else { return }
+        autoresAPI.getAllAuthors { [weak self] result in
+            switch result {
+            case .success(let authors):
+                self?.autores = authors
+            case .failure(let error):
+                let mensagem = "Não foi possível carregar autores. \(error.localizedDescription)"
+                UIAlertController.showError(mensagem, in: self!)
+            }
+        }
     }
     
     func updateTableAnimating() {

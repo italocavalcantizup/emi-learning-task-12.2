@@ -8,6 +8,11 @@
 import UIKit
 
 class LivrosListViewController: UICollectionViewController {
+    
+    private enum Segues: String {
+        case verFormNovoLivro = "verFormNovoLivroSegue"
+        case verDetalhesDoLivro = "verDetalhesDoLivroSegue"
+    }
 
     var livrosAPI: LivrosAPI?
     
@@ -26,18 +31,43 @@ class LivrosListViewController: UICollectionViewController {
     
     func carregaLivros() {
         guard let livrosAPI = livrosAPI else { return }
-        livros = livrosAPI.carregaTodos()
+        livrosAPI.getAllBooks { [weak self] result in
+            switch result {
+            case .success(let books):
+                self?.livros = books
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "verDetalhesDoLivroSegue" else { return }
+        guard let segueId = segue.identifier,
+              let expectedSegue = LivrosListViewController.Segues(rawValue: segueId) else { return }
         
+        switch expectedSegue {
+        case .verDetalhesDoLivro:
+            prepareForDetalhesDoLivro(segue, sender)
+        case .verFormNovoLivro:
+            prepareForFormNovoLivro(segue, sender)
+        }
+    }
+    
+    private func prepareForDetalhesDoLivro(_ segue: UIStoryboardSegue,_ sender: Any?) {
         guard let celula = sender as? LivroCollectionViewCell,
               let controller = segue.destination as? LivroViewController else {
             fatalError("Não foi possível executar segue \(segue.identifier!)")
         }
         
         controller.livro = celula.livro
+    }
+    
+    private func prepareForFormNovoLivro(_ segue: UIStoryboardSegue,_ sender: Any?) {
+        guard let controller = segue.destination as? NovoLivroViewController else {
+            fatalError("Não foi possível executar a segue: \(segue.identifier!)")
+        }
+        controller.delegate = self
+        controller.livrosAPI = LivrosAPI(httpRequest: HTTPRequest())
     }
 
 }
@@ -103,3 +133,9 @@ extension LivrosListViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension LivrosListViewController: NovoLivroViewControllerDelegate {
+    
+    func novoLivroViewController(_ viewController: NovoLivroViewController, adicionou livro: Livro) {
+        livros.append(livro)
+    }
+}

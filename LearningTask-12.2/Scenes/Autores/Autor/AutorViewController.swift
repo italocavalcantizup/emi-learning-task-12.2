@@ -39,17 +39,19 @@ class AutorViewController: UITableViewController {
     private func carregaLivrosDoAutor() {
         guard let id = autor.id else { return }
         
-        livrosAPI?.carregaLivros(porAutorId: id, completionHandler: { [weak self] livros in
-            self?.livrosDoAutor = livros
-            
-        }, failureHandler: { error in
-            let mensagem = """
-                Não foi possível carregar os livros do autor.
-                \(error.localizedDescription)
-            """
-            
-            UIAlertController.showError(mensagem, in: self)
-        })
+        livrosAPI?.getAllBooks(forAuthorId: id) { [weak self] result in
+            switch result {
+            case .success(let books):
+                self?.livrosDoAutor = books
+            case .failure(let error):
+                let mensagem = """
+                    Não foi possível carregar os livros do autor.
+                    \(error.localizedDescription)
+                """
+                            
+                UIAlertController.showError(mensagem, in: self!)
+            }
+        }
     }
     
 }

@@ -99,18 +99,18 @@ class NovoAutorViewController: UIViewController {
                           sobrenome: sobrenome,
                           bio: bioTextField.text!,
                           tecnologias: tecnologias)
-        
-        autoresAPI?.registraNovo(autor, completionHandler: { [weak self] novoAutor in
-            self?.dismiss(animated: true) {
-                self?.delegate?.novoAutorViewController(self!, adicionou: novoAutor)
+        autoresAPI?.registerNew(autor) { [weak self] result in
+            switch result {
+            case .success(let novoAutor):
+                self?.dismiss(animated: true) {
+                    self?.delegate?.novoAutorViewController(self!, adicionou: novoAutor)
+                }
+            case .failure(let erro):
+                debugPrint(erro)
+                let mensagem = "Não foi possível adicionar autor. \(erro.localizedDescription)"
+                UIAlertController.showError(mensagem, in: self!)
             }
-            
-        }, failureHandler: { [weak self] erro in
-            debugPrint(erro)
-            
-            let mensagem = "Não foi possível adicionar autor. \(erro.localizedDescription)"
-            UIAlertController.showError(mensagem, in: self!)
-        })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
