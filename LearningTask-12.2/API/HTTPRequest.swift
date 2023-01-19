@@ -52,6 +52,11 @@ class HTTPRequest {
         guard let uri = endpoint.uri else {
             preconditionFailure("Não fois possível construir a URI")
         }
+        
+        guard let authentication = userAuthentication.get() else {
+            preconditionFailure("Estado ilegal para a aplicação: Usuário deve estar logado")
+        }
+        
         var request = URLRequest(url: uri)
         request.httpMethod = httpMethod.rawValue
         
@@ -62,10 +67,6 @@ class HTTPRequest {
         if let encodable = encodable {
             do {
                 let data = try encoder.encode(encodable)
-                
-                guard let authentication = userAuthentication.get() else {
-                    preconditionFailure("Estado ilegal para a aplicação: Usuário deve estar logado")
-                }
                 
                 request.httpBody = data
                 request.setValue("application/json", forHTTPHeaderField: "Content-type")

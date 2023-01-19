@@ -18,8 +18,8 @@ class LivrosAPI {
     func getAllBooks(forAuthorId authorId: Int? = nil,
                      completionHandler: @escaping (Result<[Livro], Error>) -> Void) {
         
-        let id = authorId != nil ? "/\(String(describing: authorId))" : ""
-        let endpoint = Endpoint(path: "/api\(id)/book")
+        let urlPath = authorId != nil ? "author/\(authorId!)/books" : "book"
+        let endpoint = Endpoint(path: "/api/\(urlPath)")
         
         httpRequest.execute(endpoint: endpoint) { (result: Result<[Livro], NetworkError>) in
             switch result {
